@@ -8,11 +8,14 @@ function App() {
 
 
   return (
-    <div className="App">
-      <EntryContextProvider>
-        <EntryList />
-        <EntryForm />
-      </EntryContextProvider>
+    <div className="app">
+      <div> Jacky's Journal</div>
+      <div className="content">
+        <EntryContextProvider>
+          <EntryList />
+          <EntryForm />
+        </EntryContextProvider>
+      </div>
     </div>
   )
 }

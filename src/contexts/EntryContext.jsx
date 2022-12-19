@@ -13,7 +13,7 @@ const EntryContextProvider = (props) => {
     })
 
     const addEntry = (topic, date, details) => {
-        setEntries([...entries, { topic, date, details, id: uuidv4() }])
+        setEntries([{ topic, date, details, id: uuidv4() }, ...entries])
     }
 
     const deleteEntry = (id) => {
