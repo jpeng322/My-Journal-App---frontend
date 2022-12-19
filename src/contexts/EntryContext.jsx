@@ -1,34 +1,29 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
+import { v4 as uuidv4 } from 'uuid';
 
 export const EntryContext = createContext()
 
 const EntryContextProvider = (props) => {
-    const [entries, setEntries] = useState([
-        {
-            topic: "BLAHABAH",
-            date: "today",
-            details: "today was a bad day",
-            id: 1
-        },
-        {
-            topic: "asdASDASD",
-            date: "tMR",
-            details: "the best day ever day",
-            id: 2
-        }
-    ])
+    const localData = JSON.parse(localStorage.getItem("entries"))
+
+    const [entries, setEntries] = useState(localData)
+
+    useEffect(() => {
+        localStorage.setItem("entries", JSON.stringify(entries), [entries])
+    })
 
     const addEntry = (topic, date, details) => {
-        setEntries([...entries, { topic, date, details }])
-        console.log(entries)
+        setEntries([...entries, { topic, date, details, id: uuidv4() }])
     }
 
-    const deleteEntry = () => {
+    const deleteEntry = (id) => {
         console.log("deleted!")
+        setEntries(entries.filter(entry => entry.id !== id))
     }
+    console.log(entries)
 
     return (
-        <EntryContext.Provider value={{ entries, addEntry }}>
+        <EntryContext.Provider value={{ entries, addEntry, deleteEntry }}>
             {props.children}
         </EntryContext.Provider>
     )
