@@ -6,7 +6,7 @@ const EntryList = () => {
     const {entries} = useContext(EntryContext)
     return (
        <>
-       {entries.map(entry => <EntryDetails entry={entry} /> )}
+       {entries.map(entry => <EntryDetails key={entry.id} entry={entry} /> )}
        </>
     )
 }

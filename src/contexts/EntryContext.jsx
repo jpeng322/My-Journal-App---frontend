@@ -7,17 +7,28 @@ const EntryContextProvider = (props) => {
         {
             topic: "BLAHABAH",
             date: "today",
-            details: "today was a bad day"
+            details: "today was a bad day",
+            id: 1
         },
         {
             topic: "asdASDASD",
             date: "tMR",
-            details: "the best day ever day"
+            details: "the best day ever day",
+            id: 2
         }
     ])
 
+    const addEntry = (topic, date, details) => {
+        setEntries([...entries, { topic, date, details }])
+        console.log(entries)
+    }
+
+    const deleteEntry = () => {
+        console.log("deleted!")
+    }
+
     return (
-        <EntryContext.Provider value={{ entries }}>
+        <EntryContext.Provider value={{ entries, addEntry }}>
             {props.children}
         </EntryContext.Provider>
     )
