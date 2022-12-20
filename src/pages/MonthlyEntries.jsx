@@ -2,10 +2,11 @@ import { useContext } from "react"
 import { EntryContext } from "../contexts/EntryContext"
 import EntryDetails from "../components/EntryDetails"
 
-const MonthlyEntries = () => {
+const MonthlyEntries = (props) => {
+    console.log(props.month)
     const { entries } = useContext(EntryContext)
     // const januaryEntries = entries.filter(entry => entry.date)
-    const monthlyEntries = entries.filter(entry => entry.date.split(" ")[0] === "January")
+    const monthlyEntries = entries.filter(entry => entry.date.split(" ")[0] === `${props.month}`)
     // console.log(entries[0].date.split(" ")[0])
     return (
         <div className="entry-list">

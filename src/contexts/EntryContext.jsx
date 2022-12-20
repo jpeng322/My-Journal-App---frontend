@@ -45,9 +45,15 @@ const EntryContextProvider = (props) => {
         setActive(!active)
         // console.log(active)
     }
-    console.log(entries)
+    console.log(currentDate)
+
+    const closeForm = () => {
+        setActive(false)
+    }
+
+
     return (
-        <EntryContext.Provider value={{ entries, addEntry, deleteEntry, active, toggleForm }}>
+        <EntryContext.Provider value={{ entries, addEntry, deleteEntry, active, currentDate, toggleForm, closeForm }}>
             {props.children}
         </EntryContext.Provider>
     )

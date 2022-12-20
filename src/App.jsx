@@ -1,31 +1,27 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import './App.css'
 import EntryContextProvider from './contexts/EntryContext'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Home from './pages/Home'
-import January from './pages/January'
 import Navbar from './components/Navbar'
+import MonthlyEntries from './pages/MonthlyEntries'
+
 function App() {
 
+
+  const monthsArray = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+  const months = monthsArray.map(month => <Route path={month} element={<MonthlyEntries month={month} />} />)
 
   return (
     <div className="app">
       <EntryContextProvider>
         <BrowserRouter>
-          {/* <div className="app">
-        <div className="title"> My Journal</div>
-        <div className="content">
-          <EntryContextProvider>
-            <EntryList />
-            <EntryForm />
-          </EntryContextProvider>
-        </div>
-      </div> */}
+
           <div className="title"> My Journal</div>
-          < Navbar />
+          < Navbar monthsArray={monthsArray} />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="january" element={<January />} />
+            {months}
           </Routes>
         </BrowserRouter>
       </EntryContextProvider>

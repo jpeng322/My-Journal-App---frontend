@@ -1,14 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins&display=swap');
 
+
+#root {
+  /* border: 1px solid black; */
+  height: 100vh;
+  background-color: #066163
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  /* font-family: 'Poppins', sans-serif; */
 }
 
 
-.app>* {
+.app {
   /* border: 1px solid black; */
 }
 
@@ -34,7 +40,7 @@ nav>* {
   font-family: "Fredoka One", cursive;
 }
 
-nav>*:hover{
+nav>*:hover {
   text-decoration: underline;
 }
 
@@ -65,9 +71,76 @@ nav>button svg:active {
 }
 
 .entry-form {
-  /* z-index: 1;
-  display: none; */
+  border: 2px solid black;
+  border-radius: 1rem;
+  padding: 1rem;
+  position: fixed;
+  top: 2%;
+  right: 1%;
+  background-color: #edcf0a;
+  height: 240px;
+  font-family: 'Fredoka One', cursive;
+  box-shadow: 3px 3px 10px;
 }
+
+.entry-form form {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+}
+
+.form-header {
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* flex-direction: row; */
+}
+
+.form-header>* {
+  /* border: 1px solid black; */
+}
+
+.form-header svg {
+ width: 10px;
+    /* border: 1px solid red; */
+}
+
+.form-header button {
+  background-color: transparent;
+  /* border: 1px solid black;
+  /* width: 25px; */
+}
+
+.entry-form form>*:nth-child(3) {
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+
+
+.entry-form span {
+  margin-left: .25rem;
+}
+
+
+textarea {
+  width: 100%;
+  align-self: center;
+}
+
+.entry-form form button {
+  border: none;
+  align-self: flex-end;
+  padding: .5rem;
+  border-radius: .5rem;
+}
+
+.entry-form form>*:nth-child(1) ~ * {
+  /* border: 1px solid red; */
+  margin-bottom: .25rem;
+ }
 
 .hidden {
   display: none
@@ -75,15 +148,12 @@ nav>button svg:active {
 
 .entry-list {
   padding: 2rem 5rem;
-  /* border: 1px solid red; */
   flex: 8;
   display: grid;
   grid-template-columns: repeat(3, minmax(300px, 1fr));
   grid-auto-rows: minmax(300px, auto);
   gap: 4rem;
   background-color: #066163;
-  /* z-index: 0; */
-  /* background-color: #E5DCC3; */
 }
 
 .entry {
