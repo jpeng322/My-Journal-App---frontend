@@ -1,5 +1,6 @@
 import { useState, createContext, useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
+import date from "date-and-time"
 
 export const EntryContext = createContext()
 
@@ -7,23 +8,46 @@ const EntryContextProvider = (props) => {
     const localData = JSON.parse(localStorage.getItem("entries"))
 
     const [entries, setEntries] = useState(localData)
+    // const [entries, setEntries] = useState([{
+    //     topic: "asdsadasd",
+    //     date: "January 12, 2012",
+    //     details: "asdsadasd",
+    //     id: 1
+    // },
+    // {
+    //     date: "February",
+    //     topic: "It is feb",
+    //     details: "asdasdd",
+    //     id: 3
+    // }])
+
 
     useEffect(() => {
         localStorage.setItem("entries", JSON.stringify(entries), [entries])
     })
 
-    const addEntry = (topic, date, details) => {
-        setEntries([{ topic, date, details, id: uuidv4() }, ...entries])
+
+    const format = date.compile('MMMM DD, YYYY')
+    const currentDate = date.format(new Date(), format)
+    // console.log(currentDate)
+    const addEntry = (topic, details) => {
+        setEntries([{ topic, date: currentDate, details, id: uuidv4() }, ...entries])
     }
 
     const deleteEntry = (id) => {
         console.log("deleted!")
         setEntries(entries.filter(entry => entry.id !== id))
     }
-    console.log(entries)
 
+    const [active, setActive] = useState(true)
+
+    const toggleForm = () => {
+        setActive(!active)
+        // console.log(active)
+    }
+    console.log(entries)
     return (
-        <EntryContext.Provider value={{ entries, addEntry, deleteEntry }}>
+        <EntryContext.Provider value={{ entries, addEntry, deleteEntry, active, toggleForm }}>
             {props.children}
         </EntryContext.Provider>
     )
