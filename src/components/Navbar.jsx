@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { EntryContext } from "../contexts/EntryContext";
+import { v4 as uuidv4 } from 'uuid';
 
 
 const Navbar = (props) => {
 
 const {toggleForm} = useContext(EntryContext)
-const linksOfMonths = props.monthsArray.map(month => <Link to={month}>{month}</Link>) 
+const linksOfMonths = props.monthsArray.map(month => <Link key={uuidv4()} to={month}>{month}</Link>) 
     return (
         <nav>
             <Link to="/"> Home </Link>

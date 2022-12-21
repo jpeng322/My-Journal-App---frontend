@@ -43,12 +43,15 @@ const EntryContextProvider = (props) => {
     const currentDate = date.format(new Date(), format)
     // console.log(currentDate)
     const addEntry = (topic, details) => {
-        setEntries([{ topic, date: currentDate, details, id: uuidv4() }, ...entries])
+        // setEntries([{ topic, date: currentDate, details, id: uuidv4() }, ...entries])
+        axios.post("http://localhost:3001/entries", { topic, date: currentDate, details, id: uuidv4() })
+        .then(setEntries([{ topic, date: currentDate, details, id: uuidv4() }, ...entries]))
     }
 
     const deleteEntry = (id) => {
         console.log("deleted!")
-        setEntries(entries.filter(entry => entry.id !== id))
+        // setEntries(entries.filter(entry => entry.id !== id))
+        axios.delete("http://localhost:3001/entries/:id").then(setEntries(entries.filter(entry => entry.id !== id)))
     }
 
     const [active, setActive] = useState(false)

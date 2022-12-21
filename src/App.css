@@ -78,7 +78,7 @@ nav>button svg:active {
   top: 2%;
   right: 1%;
   background-color: #edcf0a;
-  height: 240px;
+  height: 250px;
   font-family: 'Fredoka One', cursive;
   box-shadow: 3px 3px 10px;
 }
@@ -102,8 +102,8 @@ nav>button svg:active {
 }
 
 .form-header svg {
- width: 10px;
-    /* border: 1px solid red; */
+  width: 10px;
+  /* border: 1px solid red; */
 }
 
 .form-header button {
@@ -137,10 +137,10 @@ textarea {
   border-radius: .5rem;
 }
 
-.entry-form form>*:nth-child(1) ~ * {
+.entry-form form>*:nth-child(1)~* {
   /* border: 1px solid red; */
   margin-bottom: .25rem;
- }
+}
 
 .hidden {
   display: none
@@ -180,25 +180,30 @@ textarea {
 
 .entry-header {
   display: flex;
+  justify-content: space-between;
 }
 
-.del-btn {
-  margin-left: auto;
+.entry-header button {
   background-color: transparent;
   border: none;
 }
 
-.del-btn svg {
-  width: 25px;
-  fill: #8a8888
+.form-buttons {
+ display: flex;
+ gap: .5rem
+
 }
 
-.del-btn svg:hover {
+.entry-header button svg {
+  width: 25px;
+  fill: #8a8888;
+}
+
+.entry-header button svg:hover {
   transition: .3s;
   cursor: pointer;
   transform: translateY(-1px);
 }
-
 
 .del-btn svg:active {
   transform: scale(0.98);
