@@ -8,6 +8,7 @@ const EntryDetails = (props) => {
     const { deleteEntry } = useContext(EntryContext)
     // console.log(props)
     // console.log(currentDate.split(" "))
+    // console.log(entries)
     return (
         <div className="entry">
             <div className="entry-header">

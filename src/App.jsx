@@ -5,6 +5,8 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import Home from './pages/Home'
 import Navbar from './components/Navbar'
 import MonthlyEntries from './pages/MonthlyEntries'
+import { useEffect } from 'react'
+import axios from 'axios'
 
 function App() {
 

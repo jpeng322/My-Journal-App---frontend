@@ -1,13 +1,15 @@
 import { useState, createContext, useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import date from "date-and-time"
+import axios from "axios";
 
 export const EntryContext = createContext()
 
 const EntryContextProvider = (props) => {
-    const localData = JSON.parse(localStorage.getItem("entries"))
+    // const localData = JSON.parse(localStorage.getItem("entries"))
 
-    const [entries, setEntries] = useState(localData)
+    // const [entries, setEntries] = useState(localData)
+    const [entries, setEntries] = useState([])
     // const [entries, setEntries] = useState([{
     //     topic: "asdsadasd",
     //     date: "January 12, 2012",
@@ -23,8 +25,18 @@ const EntryContextProvider = (props) => {
 
 
     useEffect(() => {
-        localStorage.setItem("entries", JSON.stringify(entries), [entries])
-    })
+
+        axios.get("http://localhost:3001/entries").then(response => {
+            setEntries(response.data)
+            console.log(entries)
+        })
+        console.log(entries)
+    }, [])
+
+
+    // useEffect(() => {
+    //     localStorage.setItem("entries", JSON.stringify(entries), [entries])
+    // })
 
 
     const format = date.compile('MMMM DD, YYYY')
@@ -39,13 +51,12 @@ const EntryContextProvider = (props) => {
         setEntries(entries.filter(entry => entry.id !== id))
     }
 
-    const [active, setActive] = useState(true)
+    const [active, setActive] = useState(false)
 
     const toggleForm = () => {
         setActive(!active)
         // console.log(active)
     }
-    console.log(currentDate)
 
     const closeForm = () => {
         setActive(false)
