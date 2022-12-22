@@ -28,11 +28,9 @@ const EntryContextProvider = (props) => {
 
         axios.get("http://localhost:3001/entries").then(response => {
             setEntries(response.data)
-            console.log(entries)
         })
-        console.log(entries)
     }, [])
-
+    console.log(entries)
 
     // useEffect(() => {
     //     localStorage.setItem("entries", JSON.stringify(entries), [entries])
@@ -42,17 +40,32 @@ const EntryContextProvider = (props) => {
     const format = date.compile('MMMM DD, YYYY')
     const currentDate = date.format(new Date(), format)
     // console.log(currentDate)
-    const addEntry = (topic, details) => {
+    const addEntry = (topic, details, id) => {
         // setEntries([{ topic, date: currentDate, details, id: uuidv4() }, ...entries])
-        axios.post("http://localhost:3001/entries", { topic, date: currentDate, details, id: uuidv4() })
-        .then(setEntries([{ topic, date: currentDate, details, id: uuidv4() }, ...entries]))
+        axios.post("http://localhost:3001/entries", { topic, date: currentDate, details })
+            .then(response => setEntries([response.data, ...entries]))
     }
 
     const deleteEntry = (id) => {
-        console.log("deleted!")
+        console.log(id)
         // setEntries(entries.filter(entry => entry.id !== id))
-        axios.delete("http://localhost:3001/entries/:id").then(setEntries(entries.filter(entry => entry.id !== id)))
+        axios.delete(`http://localhost:3001/entries/${id}`)
+            .then(setEntries(entries.filter(entry => entry.id !== id)))
     }
+
+    const editEntry = (id) => {
+        // const editThing = entries.find(entry => entry.id === id)
+        // console.log("pressed")
+        // console.log(id)
+        axios.put(`http://localhost:3001/entries/${id}`, {
+            date: "February",
+            topic: "It is feb",
+            details: "asdasdd",
+            id: id
+        }).then(response => setEntries([response.data, ...entries.filter(entry => entry.id !== id)]))
+    }
+
+
 
     const [active, setActive] = useState(false)
 
@@ -67,7 +80,11 @@ const EntryContextProvider = (props) => {
 
 
     return (
-        <EntryContext.Provider value={{ entries, addEntry, deleteEntry, active, currentDate, toggleForm, closeForm }}>
+        <EntryContext.Provider value={{
+            entries, addEntry, deleteEntry,
+            editEntry,
+            active, currentDate, toggleForm, closeForm
+        }}>
             {props.children}
         </EntryContext.Provider>
     )

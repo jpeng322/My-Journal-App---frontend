@@ -14,6 +14,7 @@ const EntryForm = () => {
         setDetails("")
         console.log("submitted")
     }
+
 // console.log(currentDate, "currentdate")
     return (
         <Draggable>

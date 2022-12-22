@@ -170,17 +170,25 @@ textarea {
 }
 
 .details {
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  padding: .5rem;
   width: 75%;
-  height: 60%;
+  height: 75%;
   word-break: break-word;
   align-self: center;
   font-size: 1.25rem;
 }
 
+.details h3 {
+  text-align: center;
+  margin-bottom: .5rem;
+  font-size: 1.75rem;
+}
+
 .entry-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .entry-header button {
