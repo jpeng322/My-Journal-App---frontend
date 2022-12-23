@@ -7,7 +7,7 @@ import "../cssPages/EntryList.css"
 
 const EntryList = () => {
     const { changeId, handleEdit, entries, editEntry } = useContext(EntryContext)
-    console.log(entries)
+    // console.log(entries)
     // const [changeId, setChangeId] = useState("")
 
     // const handleEdit = (id) => {

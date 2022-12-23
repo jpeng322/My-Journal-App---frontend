@@ -57,7 +57,7 @@
   
   .entry-header button svg {
     width: 25px;
-    fill: #8a8888;
+    /* fill: #8a8888; */
   }
   
   .entry-header button svg:hover {
