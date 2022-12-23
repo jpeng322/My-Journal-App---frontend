@@ -30,7 +30,7 @@ const EntryContextProvider = (props) => {
             setEntries(response.data)
         })
     }, [])
-    console.log(entries)
+    // console.log(entries)
 
     // useEffect(() => {
     //     localStorage.setItem("entries", JSON.stringify(entries), [entries])
@@ -53,18 +53,36 @@ const EntryContextProvider = (props) => {
             .then(setEntries(entries.filter(entry => entry.id !== id)))
     }
 
-    const editEntry = (id) => {
-        // const editThing = entries.find(entry => entry.id === id)
-        // console.log("pressed")
+    const editEntry = (id, topic, details) => {
+        setChangeId("")
+        console.log("changeId", changeId)
         // console.log(id)
+        const index = entries.findIndex(entry => entry.id === id)
+        // console.log(index)
         axios.put(`http://localhost:3001/entries/${id}`, {
-            date: "February",
-            topic: "It is feb",
-            details: "asdasdd",
+            topic: topic,
+            details: details,
             id: id
-        }).then(response => setEntries([response.data, ...entries.filter(entry => entry.id !== id)]))
+        }).then(response => {
+            console.log(response)
+            // const entryClone = entries
+            // entryClone.splice(index, 1, response.data)
+         entries.splice(index, 1, response.data)
+            // console.log(newString)
+            setEntries([...entries])
+        })
     }
 
+
+    const [changeId, setChangeId] = useState("")
+
+
+    const handleEdit = (id) => {
+        console.log(id)
+        // console.log(entries)
+        // editEntry(id)
+        setChangeId(id)
+    }
 
 
     const [active, setActive] = useState(false)
@@ -82,7 +100,7 @@ const EntryContextProvider = (props) => {
     return (
         <EntryContext.Provider value={{
             entries, addEntry, deleteEntry,
-            editEntry,
+            editEntry, handleEdit, changeId, setChangeId,
             active, currentDate, toggleForm, closeForm
         }}>
             {props.children}
