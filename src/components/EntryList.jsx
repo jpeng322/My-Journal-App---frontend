@@ -3,6 +3,7 @@ import { EntryContext } from "../contexts/EntryContext"
 import EntryDetails from "./EntryDetails"
 import { v4 as uuidv4 } from "uuid"
 import EditForm from "./EditForm"
+import "../cssPages/EntryList.css"
 
 const EntryList = () => {
     const { changeId, handleEdit, entries, editEntry } = useContext(EntryContext)

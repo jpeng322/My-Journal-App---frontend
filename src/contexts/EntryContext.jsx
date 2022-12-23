@@ -62,6 +62,7 @@ const EntryContextProvider = (props) => {
         axios.put(`http://localhost:3001/entries/${id}`, {
             topic: topic,
             details: details,
+            date: currentDate,
             id: id
         }).then(response => {
             console.log(response)
@@ -75,6 +76,10 @@ const EntryContextProvider = (props) => {
 
 
     const [changeId, setChangeId] = useState("")
+
+    const cancelEdit = () => {
+        setChangeId("")
+    }
 
 
     const handleEdit = (id) => {
@@ -100,7 +105,7 @@ const EntryContextProvider = (props) => {
     return (
         <EntryContext.Provider value={{
             entries, addEntry, deleteEntry,
-            editEntry, handleEdit, changeId, setChangeId,
+            editEntry, handleEdit, changeId, setChangeId, cancelEdit,
             active, currentDate, toggleForm, closeForm
         }}>
             {props.children}

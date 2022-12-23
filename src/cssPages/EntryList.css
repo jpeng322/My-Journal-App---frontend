@@ -1,0 +1,68 @@
+.entry-list {
+    padding: 2rem 5rem;
+    flex: 8;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    grid-auto-rows: minmax(300px, auto);
+    gap: 4rem;
+    background-color: #066163;
+  }
+  
+  .entry {
+    /* border: 2px solid black; */
+    border-radius: .5rem;
+    padding: 1rem;
+    background-color: #edcf0a;
+    /* background-color: #AAA492; */
+    font-family: 'Fredoka One', cursive;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-shadow: 3px 3px 10px;
+  }
+  
+  .details {
+    /* border: 1px solid black; */
+    padding: .5rem;
+    width: 75%;
+    height: 75%;
+    word-break: break-word;
+    align-self: center;
+    font-size: 1.25rem;
+  }
+  
+  .details h3 {
+    text-align: center;
+    margin-bottom: .5rem;
+    font-size: 1.75rem;
+  }
+  
+  .entry-header {
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .entry-header button {
+    background-color: transparent;
+    border: none;
+  }
+  
+  .form-buttons {
+   display: flex;
+   gap: .5rem
+  
+  }
+  
+  .entry-header button svg {
+    width: 25px;
+    fill: #8a8888;
+  }
+  
+  .entry-header button svg:hover {
+    transition: .3s;
+    cursor: pointer;
+    transform: translateY(-1px);
+  }
+  

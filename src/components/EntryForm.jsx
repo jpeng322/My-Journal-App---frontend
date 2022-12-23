@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { EntryContext } from "../contexts/EntryContext";
 import Draggable from "react-draggable";
+import "../cssPages/EntryForm.css"
 
 const EntryForm = () => {
     const { addEntry, active, currentDate, closeForm } = useContext(EntryContext)

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { EntryContext } from "../contexts/EntryContext";
 import { v4 as uuidv4 } from 'uuid';
-
+import "../cssPages/Navbar.css"
 
 const Navbar = (props) => {
 

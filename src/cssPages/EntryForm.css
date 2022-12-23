@@ -1,0 +1,76 @@
+.entry-form {
+    border: 2px solid black;
+    border-radius: 1rem;
+    padding: 1rem;
+    position: fixed;
+    top: 2%;
+    right: 1%;
+    background-color: #edcf0a;
+    height: 250px;
+    font-family: 'Fredoka One', cursive;
+    box-shadow: 3px 3px 10px;
+  }
+  
+  .entry-form form {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-header {
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* flex-direction: row; */
+  }
+  
+  .form-header>* {
+    /* border: 1px solid black; */
+  }
+  
+  .form-header svg {
+    width: 10px;
+    /* border: 1px solid red; */
+  }
+  
+  .form-header button {
+    background-color: transparent;
+    /* border: 1px solid black;
+    /* width: 25px; */
+  }
+  
+  .entry-form form>*:nth-child(3) {
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+  }
+  
+  
+  .entry-form span {
+    margin-left: .25rem;
+  }
+  
+  
+  textarea {
+    width: 100%;
+    align-self: center;
+    resize: none;
+  }
+  
+  .entry-form form button {
+    border: none;
+    align-self: flex-end;
+    padding: .5rem;
+    border-radius: .5rem;
+  }
+  
+  .entry-form form>*:nth-child(1)~* {
+    /* border: 1px solid red; */
+    margin-bottom: .25rem;
+  }
+  
+  .hidden {
+    display: none
+  }

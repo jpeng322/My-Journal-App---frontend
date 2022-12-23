@@ -10,7 +10,7 @@ import { v4 as uuidv4 } from 'uuid';
 function App() {
 
 
-  const monthsArray = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+  const monthsArray = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "Favorites"]
   const months = monthsArray.map(month => <Route key={uuidv4()} path={month} element={<MonthlyEntries month={month} />} />)
 
   return (
