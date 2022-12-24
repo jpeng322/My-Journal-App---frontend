@@ -1,10 +1,9 @@
 import { useContext } from "react";
 import { EntryContext } from "../contexts/EntryContext";
-import date from "date-and-time"
 
 const EntryDetails = (props) => {
     const {deleteEntry, addFavorite, delFavorite } = useContext(EntryContext)
-    console.log(props)
+    // console.log(props)
 
     return (
         <div className="entry">
