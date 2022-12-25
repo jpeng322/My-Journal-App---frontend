@@ -31,14 +31,9 @@ const EntryContextProvider = (props) => {
         })
     }, [])
 
-    // useEffect(() => {
-    //     localStorage.setItem("entries", JSON.stringify(entries), [entries])
-    // })
-
 
     const format = date.compile('MMMM DD, YYYY')
     const currentDate = date.format(new Date(), format)
-    // console.log(currentDate)
     const addEntry = (topic, details, id) => {
         // setEntries([{ topic, date: currentDate, details, id: uuidv4() }, ...entries])
         axios.post("http://localhost:3001/entries", { topic, date: currentDate, details, favorite: false })
@@ -52,7 +47,7 @@ const EntryContextProvider = (props) => {
             .then(setEntries(entries.filter(entry => entry.id !== id)))
     }
 
-    const editEntry = (id, topic, details, favorite) => {
+    const editEntry = (id, topic, date, details, favorite) => {
         setChangeId("")
         console.log("changeId", changeId)
         // console.log(id)
@@ -61,7 +56,7 @@ const EntryContextProvider = (props) => {
         axios.put(`http://localhost:3001/entries/${id}`, {
             topic: topic,
             details: details,
-            date: currentDate,
+            date: date,
             id: id,
             favorite: favorite
         }).then(response => {
@@ -82,10 +77,8 @@ const EntryContextProvider = (props) => {
     }
 
 
-    const handleEdit = (id) => {
-        console.log(id)
-        // console.log(entries)
-        // editEntry(id)
+    const toggleEdit = (id) => {
+        console.log("toggled edit")
         setChangeId(id)
     }
 
@@ -101,17 +94,11 @@ const EntryContextProvider = (props) => {
         setActive(false)
     }
 
-    // const [favorites, setFavorites] = useState([])
-    // const [isFavorite, setIsFavorite] = useState(false)
 
     const addFavorite = (id) => {
         axios.put(`http://localhost:3001/entries/${id}`, {
             favorite: true
         }).then(response => {
-            // console.log(response)
-
-            // console.log(id)
-            // setIsFavorite(true)
             const updatedEntries = entries.map(entry => {
                 if (entry.id === id) {
                     return { ...entry, favorite: true }
@@ -119,13 +106,10 @@ const EntryContextProvider = (props) => {
                     return entry
                 }
             })
-            // const favoritedEntry = entries.filter(entry => entry.id === id)
-            // setFavorites([response.data,...favorites])
             setEntries(updatedEntries)
         })
 
     }
-    // console.log(favorites)
 
     const delFavorite = (id) => {
         axios.put(`http://localhost:3001/entries/${id}`, {
@@ -148,9 +132,8 @@ const EntryContextProvider = (props) => {
     return (
         <EntryContext.Provider value={{
             entries, addEntry, deleteEntry,
-            editEntry, handleEdit, changeId, setChangeId, cancelEdit,
+            editEntry, toggleEdit, changeId, setChangeId, cancelEdit,
             active, currentDate, toggleForm, closeForm, addFavorite, 
-            //  favorites,
              delFavorite
         }}>
             {props.children}
