@@ -1,0 +1,45 @@
+/* #root {
+    border: 1px solid black;
+    display: flex;
+} */
+
+.signup {
+    /* border: 1px solid red; */
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.signup-content {
+    background-color: rgb(205, 202, 202);
+    border: 1px solid black;
+    height: 200px;
+    width: 300px;
+    border-radius: 1rem;
+    box-shadow: 5px 5px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    margin-bottom: 200px;
+}
+
+.signup-content > * {
+    /* border: 1px solid red; */
+}
+
+.signup-content button {
+    padding: .5rem;
+    border-radius: .25rem;
+    border: none;
+}
+
+.input {
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+}

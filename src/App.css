@@ -18,12 +18,39 @@
   /* border: 1px solid black; */
 }
 
+
+.content {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+}
+
+
 .title {
   font-size: 4rem;
   text-align: center;
   padding: 4rem 2rem 0rem 2rem;
   font-family: 'Fredoka One', cursive;
-  background-color: #066163
+  /* background-color: #066163 */
+  display: flex;
+  justify-content: center;
+  /* border: 1px solid red; */
+}
+
+.title button {
+  /* border: 1px solid red; */
+  /* margin-left: auto; */
+  position: absolute;
+  right: 0;
+  margin-right: 4rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: transparent;
+  color: antiquewhite;
+  font-family: 'Fredoka One', cursive;
+  border: 2px solid antiquewhite;
+
+
 }
 
 .content {

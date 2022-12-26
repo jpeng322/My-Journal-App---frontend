@@ -4,29 +4,33 @@ import { EntryContext } from "../contexts/EntryContext";
 import EntryDetails from "../components/EntryDetails";
 import EditForm from "../components/EditForm";
 import "../cssPages/EditForm.css"
+import FilterBar from "../components/FilterBar"
+import { AuthContext } from "../contexts/AuthContext"
 
 const Favorites = () => {
-    const {  changeId, toggleEdit, entries } = useContext(EntryContext)
-    // console.log(favorites, "favorites")
-    console.log(entries)
- const favoritedEntries = entries.filter(entry => entry.favorite)
- console.log(entries.filter(entry => entry.favorite))
- {console.log(changeId)}
+    const { changeId, toggleEdit, entries } = useContext(EntryContext)
+    const { Logout } = useContext(AuthContext)
+
+    const favoritedEntries = entries.filter(entry => entry.favorite)
+
+    const monthsArray = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
     return (
-        
-        <div className="entry-list">
-        {favoritedEntries.length > 0 ? 
-        favoritedEntries.map(entry => {
-           return entry.id === changeId ? <EditForm entry={entry} /> :
-         <EntryDetails key={entry.id} entry={entry} toggleEdit={toggleEdit} />}) : 
-        "No journal notes for this month"}
-    // </div>
-        // <div className="entry-list">
-        //     {favoritedEntries.length > 0 ? favoritedEntries.map(entry => <EntryDetails key={entry.id} entry={entry} />) : "No journal notes for this month"}
-        // </div>
-        //    <div className="entry-list">
-        //    {favoritedEntries.length > 0 ? favoritedEntries.map(entry => <EditForm entry={entry} />) : "No journal notes for this month"}
-        // </div>
+        <div className="content">
+            <div className="title">
+                <div>My Journal</div>
+                <button onClick={Logout}>Logout</button>
+            </div>
+            < FilterBar monthsArray={monthsArray} />
+            <div className="entry-list">
+                {favoritedEntries.length > 0 ?
+                    favoritedEntries.map(entry => {
+                        return entry.id === changeId ? <EditForm entry={entry} /> :
+                            <EntryDetails key={entry.id} entry={entry} toggleEdit={toggleEdit} />
+                    }) :
+                    "No journal notes for this month"}
+            </div>
+        </div>
     );
 }
 

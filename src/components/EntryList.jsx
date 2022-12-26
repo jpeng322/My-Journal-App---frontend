@@ -7,17 +7,7 @@ import "../cssPages/EntryList.css"
 
 const EntryList = () => {
     const { changeId, toggleEdit, entries, editEntry } = useContext(EntryContext)
-    // console.log(entries)
-    // const [changeId, setChangeId] = useState("")
 
-    // const handleEdit = (id) => {
-    //     console.log(id)
-    //     console.log(entries)
-    //     editEntry(id)
-    //     setChangeId(id)
-    // }
-    // console.log(changeId)
-    {console.log(changeId)}
     return (
         <div className="entry-list">
             {entries.map(entry => {
