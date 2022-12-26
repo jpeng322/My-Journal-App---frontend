@@ -7,6 +7,7 @@ export const AuthContext = createContext()
 const AuthContextProvider = (props) => {
 
     const [hasUser, setHasUser] = useState(false)
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")))
 
     const [signupMessage, setSignupMessage] = useState("")
     const Signup = (username, password) => {
@@ -56,12 +57,13 @@ const AuthContextProvider = (props) => {
         const user = JSON.parse(localStorage.getItem("user"))
         if (user) {
             setHasUser(true)
+            // setUser(user)
         }
-    }, [])
+    }, [user])
 
-    console.log(hasUser)
+    console.log(user)
     return (
-        <AuthContext.Provider value={{ Signup, signupMessage, Login, loginMessage, Logout,  hasUser }} >
+        <AuthContext.Provider value={{ Signup, signupMessage, Login, loginMessage, Logout, user, hasUser }} >
             {props.children}
         </AuthContext.Provider>
 

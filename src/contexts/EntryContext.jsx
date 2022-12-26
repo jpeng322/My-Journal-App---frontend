@@ -1,7 +1,8 @@
-import { useState, createContext, useEffect } from "react";
+import { useState, createContext, useEffect, useContext } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import date from "date-and-time"
 import axios from "axios";
+import { AuthContext } from "./AuthContext";
 
 export const EntryContext = createContext()
 
@@ -23,13 +24,21 @@ const EntryContextProvider = (props) => {
     //     "id": 3
     // }])
 
+    const { hasUser, user } = useContext(AuthContext)
 
     useEffect(() => {
+        console.log(user.data.token)
 
-        axios.get("http://localhost:3001/entries").then(response => {
-            setEntries(response.data)
-        })
-    }, [])
+        const fetchEntries = () => axios.get("http://localhost:3001/entries", { headers: { "Authorization": `Bearer ${user.data.token}` } })
+            .then(response => {
+                setEntries(response.data)
+            })
+
+        if (hasUser === true) {
+            fetchEntries()
+        }
+
+    }, [hasUser])
 
 
     const format = date.compile('MMMM DD, YYYY')
@@ -43,7 +52,7 @@ const EntryContextProvider = (props) => {
     const deleteEntry = (id) => {
         console.log(id)
         // setEntries(entries.filter(entry => entry.id !== id))
-        axios.delete(`http://localhost:3001/entries/${id}`)
+        axios.delete(`http://localhost:3001/entries/${id}`, { headers: { "Authorization": `Bearer ${user.data.token}` } })
             .then(setEntries(entries.filter(entry => entry.id !== id)))
     }
 
@@ -59,7 +68,7 @@ const EntryContextProvider = (props) => {
             date: date,
             id: id,
             favorite: favorite
-        }).then(response => {
+        }, { headers: { "Authorization": `Bearer ${user.data.token}` } }).then(response => {
             console.log(response)
             // const entryClone = entries
             // entryClone.splice(index, 1, response.data)
@@ -98,7 +107,7 @@ const EntryContextProvider = (props) => {
     const addFavorite = (id) => {
         axios.put(`http://localhost:3001/entries/${id}`, {
             favorite: true
-        }).then(response => {
+        }, { headers: { "Authorization": `Bearer ${user.data.token}` } }).then(response => {
             const updatedEntries = entries.map(entry => {
                 if (entry.id === id) {
                     return { ...entry, favorite: true }
@@ -114,7 +123,7 @@ const EntryContextProvider = (props) => {
     const delFavorite = (id) => {
         axios.put(`http://localhost:3001/entries/${id}`, {
             favorite: false
-        }).then(response => {
+        }, { headers: { "Authorization": `Bearer ${user.data.token}` } }).then(response => {
             const updatedEntries = entries.map(entry => {
                 if (entry.id === id) {
                     return { ...entry, favorite: false }
@@ -133,8 +142,8 @@ const EntryContextProvider = (props) => {
         <EntryContext.Provider value={{
             entries, addEntry, deleteEntry,
             editEntry, toggleEdit, changeId, setChangeId, cancelEdit,
-            active, currentDate, toggleForm, closeForm, addFavorite, 
-             delFavorite
+            active, currentDate, toggleForm, closeForm, addFavorite,
+            delFavorite
         }}>
             {props.children}
         </EntryContext.Provider>
