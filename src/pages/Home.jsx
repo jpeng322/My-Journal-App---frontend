@@ -5,27 +5,42 @@ import FilterBar from "../components/FilterBar"
 import "../App.css"
 import { useContext } from "react"
 import { AuthContext } from "../contexts/AuthContext"
+import Login from "./Login"
 
 const Home = () => {
 
     const monthsArray = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     //   const months = monthsArray.map(month => <Route key={uuidv4()} path={month} element={<MonthlyEntries month={month} />} />)
 
-    const { Logout } = useContext(AuthContext)
-    return (
-        <div className="home">
-            <div className="content">
+    const { Logout, hasUser } = useContext(AuthContext)
+    return (<>
+        {!hasUser ? <Login /> : <div className="home">
+            < div className="content" >
                 <div className="title">
                     <div>My Journal</div>
+
                     <button onClick={Logout}>Logout</button>
                 </div>
                 < FilterBar monthsArray={monthsArray} />
-                {/* <EntryContextProvider> */}
                 <EntryList />
                 <EntryForm />
-                {/* </EntryContextProvider> */}
-            </div>
-        </div>);
+            </div >
+        </div >}
+        {/* {hasUser ? <div>hi</div> : <div>not logged in</div>}
+        <div className="home">
+            < div className="content" >
+                <div className="title">
+                    <div>My Journal</div>
+
+                    <button onClick={Logout}>Logout</button>
+                </div>
+                < FilterBar monthsArray={monthsArray} />
+                <EntryList />
+                <EntryForm />
+            </div >
+        </div > */}
+    </>);
+
 }
 
 export default Home;
