@@ -24,21 +24,20 @@ const EntryContextProvider = (props) => {
     //     "id": 3
     // }])
 
-    const { hasUser, user } = useContext(AuthContext)
+    const { hasUser, user} = useContext(AuthContext)
 
     useEffect(() => {
-        console.log(user.data.token)
-
         const fetchEntries = () => axios.get("http://localhost:3001/entries", { headers: { "Authorization": `Bearer ${user.data.token}` } })
             .then(response => {
                 setEntries(response.data)
             })
 
-        if (hasUser === true) {
+        if (user) {
             fetchEntries()
+            console.log("fetched stuff")
         }
 
-    }, [hasUser])
+    }, [user])
 
 
     const format = date.compile('MMMM DD, YYYY')

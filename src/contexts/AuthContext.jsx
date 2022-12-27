@@ -7,7 +7,9 @@ export const AuthContext = createContext()
 const AuthContextProvider = (props) => {
 
     const [hasUser, setHasUser] = useState(false)
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")))
+    // const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
+    const [user, setUser] = useState("")
+    console.log(user)
 
     const [signupMessage, setSignupMessage] = useState("")
     const Signup = (username, password) => {
@@ -33,14 +35,19 @@ const AuthContextProvider = (props) => {
         setLoginMessage("")
 
         axios.post("http://localhost:3001/login", { username, password }).then(response => {
-            console.log(response)
-           setHasUser(true)
+            // console.log(response)
+            setHasUser(true)
             setLoginMessage("Successfully logged in!")
             localStorage.setItem("user", JSON.stringify(response))
+            const user = JSON.parse(localStorage.getItem("user"))
+            setUser(user)
+            console.log(user, hasUser)
         })
             .catch(
                 error => {
-                    console.log(error)
+                    console.error(error)
+                    console.log(JSON.parse(error.request.response).error)
+                    console.log(JSON.parse(error.request.response).msg)
                     setLoginMessage(JSON.parse(error.request.response).msg)
                     console.log(JSON.parse(error.request.response).msg)
                 }
@@ -51,15 +58,21 @@ const AuthContextProvider = (props) => {
         console.log("item removed!")
         setHasUser(false)
         localStorage.removeItem("user")
+        setUser("")
     }
 
     useEffect(() => {
-        const user = JSON.parse(localStorage.getItem("user"))
-        if (user) {
+        const userLocal = JSON.parse(localStorage.getItem('user'))
+        console.log(userLocal)
+        // const user = JSON.parse(localStorage.getItem("user"))
+        if (userLocal) {
+            setUser(userLocal)
             setHasUser(true)
             // setUser(user)
+            // Login
+            console.log(userLocal)
         }
-    }, [user])
+    }, [])
 
     console.log(user)
     return (

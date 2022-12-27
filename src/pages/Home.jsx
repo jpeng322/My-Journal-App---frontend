@@ -12,9 +12,10 @@ const Home = () => {
     const monthsArray = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     //   const months = monthsArray.map(month => <Route key={uuidv4()} path={month} element={<MonthlyEntries month={month} />} />)
 
-    const { Logout, hasUser } = useContext(AuthContext)
+    const { Logout, user } = useContext(AuthContext)
+    console.log( user , "LOGIN HAS USER OR NAH")
     return (<>
-        {!hasUser ? <Login /> : <div className="home">
+        {!user ? <Login /> : <div className="home">
             < div className="content" >
                 <div className="title">
                     <div>My Journal</div>
