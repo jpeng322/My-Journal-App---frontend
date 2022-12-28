@@ -19,8 +19,6 @@ function App() {
 
   return (
     <div className="app">
-      <AuthContextProvider>
-        <EntryContextProvider>
           <BrowserRouter>
             <Routes>
               <Route path="/" element={user ? <Home /> : <Navigate to="/login" />} />
@@ -31,8 +29,6 @@ function App() {
               {console.log(user)}
             </Routes>
           </BrowserRouter>
-        </EntryContextProvider>
-      </AuthContextProvider>
     </div>
   )
 }

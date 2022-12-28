@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import "../cssPages/Signup.css"
 import { Link } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
-const Login = () => {
+const Login = (props) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
@@ -15,8 +15,8 @@ const Login = () => {
     }
 
 
-
-
+// console.log(props.handleSubmit)
+console.log(props)
     return (
         <form action="" className="signup" onSubmit={handleSubmit}>
             <div className="signup-content">
@@ -32,11 +32,12 @@ const Login = () => {
                 <div className="input">
                     <button type="submit">Login</button>
                     <Link to="/signup">Sign up</Link>
-                    <Link to="/">Home</Link>
+
                 </div>
                 <div>{loginMessage}</div>
             </div>
         </form>
+        // <div>haha</div>
     );
 }
 

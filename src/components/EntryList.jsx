@@ -6,7 +6,7 @@ import EditForm from "./EditForm"
 import "../cssPages/EntryList.css"
 
 const EntryList = () => {
-    const { changeId, toggleEdit, entries, editEntry } = useContext(EntryContext)
+    const { changeId, toggleEdit, entries } = useContext(EntryContext)
 
     return (
         <div className="entry-list">

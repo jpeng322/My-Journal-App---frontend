@@ -41,7 +41,7 @@ const AuthContextProvider = (props) => {
             localStorage.setItem("user", JSON.stringify(response))
             const user = JSON.parse(localStorage.getItem("user"))
             setUser(user)
-            console.log(user, hasUser)
+            console.log(user, hasUser, "rerender")
         })
             .catch(
                 error => {
@@ -76,7 +76,7 @@ const AuthContextProvider = (props) => {
 
     console.log(user)
     return (
-        <AuthContext.Provider value={{ Signup, signupMessage, Login, loginMessage, Logout, user, hasUser }} >
+        <AuthContext.Provider value={{ Signup, signupMessage, Login, loginMessage, Logout, user, setUser, hasUser }} >
             {props.children}
         </AuthContext.Provider>
 
