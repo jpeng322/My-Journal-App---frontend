@@ -1,7 +1,5 @@
 import { useContext, useState } from 'react'
 import './App.css'
-import EntryContextProvider from './contexts/EntryContext'
-import AuthContextProvider from './contexts/AuthContext'
 import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom'
 import Home from './pages/Home'
 import MonthlyEntries from './pages/MonthlyEntries'

@@ -1,11 +1,11 @@
 import axios from "axios";
-import { createContext, useEffect, useState } from "react";
-
+import { createContext, useEffect, useState, useContext } from "react";
+import { EntryContext } from "./EntryContext";
 export const AuthContext = createContext()
 
 
 const AuthContextProvider = (props) => {
-
+    // const {setEntries} = useContext(EntryContext)
     const [hasUser, setHasUser] = useState(false)
     // const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
     const [user, setUser] = useState("")
@@ -45,11 +45,7 @@ const AuthContextProvider = (props) => {
         })
             .catch(
                 error => {
-                    console.error(error)
-                    console.log(JSON.parse(error.request.response).error)
-                    console.log(JSON.parse(error.request.response).msg)
                     setLoginMessage(JSON.parse(error.request.response).msg)
-                    console.log(JSON.parse(error.request.response).msg)
                 }
             )
     }
@@ -59,8 +55,10 @@ const AuthContextProvider = (props) => {
         setHasUser(false)
         localStorage.removeItem("user")
         setUser("")
+        // setEntries(null)
     }
 
+    console.log(user)
     useEffect(() => {
         const userLocal = JSON.parse(localStorage.getItem('user'))
         console.log(userLocal)
