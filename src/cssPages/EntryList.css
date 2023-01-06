@@ -5,14 +5,14 @@
     grid-template-columns: repeat(3, minmax(300px, 1fr));
     grid-auto-rows: minmax(300px, auto);
     gap: 4rem;
-    background-color: #066163;
+    background-color: rgb(206, 190, 190);
   }
   
   .entry {
     /* border: 2px solid black; */
     border-radius: .5rem;
     padding: 1rem;
-    background-color: #edcf0a;
+    background-color: #e2e1de;
     /* background-color: #AAA492; */
     font-family: 'Fredoka One', cursive;
     display: flex;
@@ -57,9 +57,11 @@
   
   .entry-header button svg {
     width: 25px;
-    /* fill: #8a8888; */
   }
   
+  .form-buttons > *:nth-child(1),.form-buttons > *:nth-child(2){
+    fill: #595858; 
+  }
   .entry-header button svg:hover {
     transition: .3s;
     cursor: pointer;

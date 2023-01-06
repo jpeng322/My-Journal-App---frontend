@@ -96,7 +96,7 @@ const EntryContextProvider = (props) => {
 
     const toggleForm = () => {
         setActive(!active)
-        // console.log(active)
+        console.log("toggled")
     }
 
     const closeForm = () => {

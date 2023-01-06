@@ -7,6 +7,8 @@ export const AuthContext = createContext()
 const AuthContextProvider = (props) => {
     // const {setEntries} = useContext(EntryContext)
     const [hasUser, setHasUser] = useState(false)
+    const [accountName, setAccountName] = useState("")
+    const [accountPw, setAccountPw] = useState("")
     // const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
     const [user, setUser] = useState("")
     console.log(user)
@@ -74,7 +76,7 @@ const AuthContextProvider = (props) => {
 
     console.log(user)
     return (
-        <AuthContext.Provider value={{ Signup, signupMessage, Login, loginMessage, Logout, user, setUser, hasUser }} >
+        <AuthContext.Provider value={{ Signup, signupMessage, Login, loginMessage, accountName, setAccountName, accountPw, setAccountPw, Logout, user, setUser, hasUser }} >
             {props.children}
         </AuthContext.Provider>
 

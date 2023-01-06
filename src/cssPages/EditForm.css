@@ -2,7 +2,7 @@
    /* border: 2px solid black; */
    border-radius: .5rem;
    padding: 1rem;
-   background-color: #edcf0a;
+   background-color:#e2e1de;
    /* background-color: #AAA492; */
    font-family: 'Fredoka One', cursive;
    display: flex;
@@ -58,4 +58,8 @@ gap: .5rem;
 
 .edit-content textarea {
    width: 100%
+}
+
+.empty-notice {
+    text-align: center;
 }

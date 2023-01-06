@@ -1,19 +1,23 @@
 nav {
-    background-color: #066163;
+  background-color: rgb(206, 190, 190);
     display: flex;
     justify-content: center;
     gap: 1.5rem;
   }
   
+  nav {
+    
+  }
   nav>* {
-    color: black;
-    text-decoration: none;
+
+    color: black !important;
+    text-decoration: none !important;
     padding: 1rem 0rem;
     font-family: "Fredoka One", cursive;
   }
   
   nav>*:hover {
-    text-decoration: underline;
+    text-decoration: underline !important;
   }
   
   nav>button {
