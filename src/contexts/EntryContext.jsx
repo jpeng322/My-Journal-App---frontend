@@ -24,28 +24,28 @@ const EntryContextProvider = (props) => {
     //     "id": 3
     // }])
 
-    const { hasUser, user } = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
 
     useEffect(() => {
-        console.log(user.data.token)
+            const fetchEntries = () => axios.get("http://localhost:3001/entries", { headers: { "Authorization": `Bearer ${user.data.token}` } })
+                .then(response => {
+                    console.log(response.data)
+                    setEntries(response.data)
+                })
 
-        const fetchEntries = () => axios.get("http://localhost:3001/entries", { headers: { "Authorization": `Bearer ${user.data.token}` } })
-            .then(response => {
-                setEntries(response.data)
-            })
-
-        if (hasUser === true) {
-            fetchEntries()
-        }
-
-    }, [hasUser])
+            if (user) {
+                fetchEntries()
+                console.log("fetched stuff")
+            }
+        
+    }, [user])
 
 
     const format = date.compile('MMMM DD, YYYY')
     const currentDate = date.format(new Date(), format)
     const addEntry = (topic, details, id) => {
         // setEntries([{ topic, date: currentDate, details, id: uuidv4() }, ...entries])
-        axios.post("http://localhost:3001/entries", { topic, date: currentDate, details, favorite: false })
+        axios.post("http://localhost:3001/entries", { topic, date: currentDate, details, favorite: false},{ headers: { "Authorization": `Bearer ${user.data.token}` } })
             .then(response => setEntries([response.data, ...entries]))
     }
 
@@ -96,7 +96,7 @@ const EntryContextProvider = (props) => {
 
     const toggleForm = () => {
         setActive(!active)
-        // console.log(active)
+        console.log("toggled")
     }
 
     const closeForm = () => {
@@ -140,7 +140,7 @@ const EntryContextProvider = (props) => {
 
     return (
         <EntryContext.Provider value={{
-            entries, addEntry, deleteEntry,
+            entries, setEntries, addEntry, deleteEntry,
             editEntry, toggleEdit, changeId, setChangeId, cancelEdit,
             active, currentDate, toggleForm, closeForm, addFavorite,
             delFavorite

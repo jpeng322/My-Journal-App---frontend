@@ -6,13 +6,14 @@ import EditForm from "./EditForm"
 import "../cssPages/EntryList.css"
 
 const EntryList = () => {
-    const { changeId, toggleEdit, entries, editEntry } = useContext(EntryContext)
+    const { changeId, toggleEdit, entries } = useContext(EntryContext)
 
     return (
         <div className="entry-list">
-            {entries.map(entry => {
+            
+            {entries? entries.map(entry => {
                 return entry.id === changeId ? <EditForm entry={entry} /> : <EntryDetails key={uuidv4()} entry={entry} toggleEdit={toggleEdit} />
-            })}
+            }) : "No notes"}
             {/* {entries.map(entry => <EditForm entry={entry} />)} */}
         </div>
     )

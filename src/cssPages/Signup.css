@@ -3,8 +3,15 @@
     display: flex;
 } */
 
-.signup {
+.img {
     /* border: 1px solid red; */
+
+}
+
+.design {
+    
+}
+.signup-container {
     display: flex;
     height: 100vh;
     flex-direction: column;
@@ -13,23 +20,45 @@
 }
 
 
+.access-form {
+    display: flex;
+}
+
+.access-form>* {
+    /* border: 1px solid red; */
+}
+
+.design {
+    flex-grow: 1;
+    background-color: #3C79F5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45%
+}
+
+.signup-container {
+    flex-grow: 1;
+    width: 55%;
+    background-color: rgb(236, 232, 232);
+}
+
 .signup-content {
-    background-color: rgb(205, 202, 202);
-    border: 1px solid black;
-    height: 200px;
-    width: 300px;
-    border-radius: 1rem;
-    box-shadow: 5px 5px 10px;
+    /* background-color: rgb(205, 202, 202); */
+    /* border: 1px solid red; */
+    /* box-shadow: 5px 5px 10px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: .5rem;
+    gap: 1rem;
     margin-bottom: 200px;
 }
 
-.signup-content > * {
-    /* border: 1px solid red; */
+
+
+.input{
+    width: 100%;
 }
 
 .signup-content button {
@@ -38,8 +67,17 @@
     border: none;
 }
 
-.input {
+
+.btn-div {
+    width: 100%;
+}
+
+.sub-btn {
+    width: 100%;
+}
+
+.access-message {
     display: flex;
     gap: .5rem;
-    align-items: center;
+    /* flex-direction:  column; */
 }

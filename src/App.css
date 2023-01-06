@@ -4,7 +4,7 @@
 #root {
   /* border: 1px solid black; */
   height: 100vh;
-  background-color: #066163
+  background-color: rgb(206, 190, 190);
 }
 
 * {
@@ -28,46 +28,61 @@
 
 .title {
   font-size: 4rem;
+  color: #3C79F5;
   text-align: center;
-  padding: 4rem 2rem 0rem 2rem;
+  padding: 3rem 1rem 0rem 1rem;
   font-family: 'Fredoka One', cursive;
   /* background-color: #066163 */
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
+  justify-content: space-around;
+  /* align-items: flex-end; */
   /* border: 1px solid red; */
 }
+
 
 .title button {
   /* border: 1px solid red; */
   /* margin-left: auto; */
-  position: absolute;
-  right: 0;
-  margin-right: 4rem;
+  /* position: absolute; */
+  /* right: 0; */
+  /* margin-right: 4rem;
   margin-top: 1rem;
   padding: 1rem;
   background-color: transparent;
   color: antiquewhite;
   font-family: 'Fredoka One', cursive;
-  border: 2px solid antiquewhite;
-
-
+  border: 2px solid antiquewhite; */
+  /* border: 1px solid red; */
+  /* margin-left: auto; */
+  margin-left: auto !important;
 }
 
 .content {
   display: flex;
+  padding: 0rem 4rem;
 }
+
+.header-right {
+  display: flex;
+  /* border: 1px solid red; */
+  font-size: 1rem;
+  align-items: center;
+  gap: 1rem;
+}
+
 
 .del-btn svg:active {
   transform: scale(0.98);
   box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
 }
 
+.empty-notice {
+  text-align: center;
+  margin-top: 100px;
+}
 
 /* .entry {
   width: 300px;
   height: 300px;
 } */
-
-.haha {
-  border: 1px solid red;
-}
