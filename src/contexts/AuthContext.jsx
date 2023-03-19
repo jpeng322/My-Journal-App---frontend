@@ -19,13 +19,16 @@ const AuthContextProvider = (props) => {
 
         axios.post("http://localhost:3001/signup", { username, password }).then(response => {
             console.log(response)
-            setSignupMessage("Successfully signed up!")
+            // setSignupMessage("Successfully signed up!")
             localStorage.setItem("user", JSON.stringify(response))
         })
             .catch(
                 error => {
                     console.log(error)
                     setSignupMessage(JSON.parse(error.request.response).msg)
+                    setTimeout(() => {
+                        setSignupMessage("")
+                    }, 6000)
                     console.log(JSON.parse(error.request.response).msg)
                 }
             )
@@ -39,15 +42,18 @@ const AuthContextProvider = (props) => {
         axios.post("http://localhost:3001/login", { username, password }).then(response => {
             // console.log(response)
             setHasUser(true)
-            setLoginMessage("Successfully logged in!")
             localStorage.setItem("user", JSON.stringify(response))
             const user = JSON.parse(localStorage.getItem("user"))
             setUser(user)
-            console.log(user, hasUser, "rerender")
+
         })
             .catch(
                 error => {
-                    setLoginMessage(JSON.parse(error.request.response).msg)
+                    console.log(error)
+                    setTimeout(() => {
+                        setLoginMessage(error.response.data.error)
+                    }, 6000)
+
                 }
             )
     }
