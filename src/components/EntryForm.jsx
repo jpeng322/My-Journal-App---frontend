@@ -27,7 +27,7 @@ const EntryForm = () => {
                     </div>
                     <div>
                         <label htmlFor="topic">Topic: </label>
-                        <input type="text" name="topic" id="topic" onChange={(e) => setTopic(e.target.value)} value={topic} />
+                        <input className="ms-2" type="text" name="topic" id="topic" onChange={(e) => setTopic(e.target.value)} value={topic} />
                     </div>
                     <div>
                         <p>Date: <span>{currentDate}</span></p>

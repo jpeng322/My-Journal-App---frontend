@@ -2,17 +2,20 @@ import EntryList from "../components/EntryList"
 import EntryForm from '../components/EntryForm'
 import FilterBar from "../components/FilterBar"
 import "../App.css"
-import { useContext, useEffect, useState } from "react"
+import { useContext } from "react"
 import { AuthContext } from "../contexts/AuthContext"
 import { EntryContext } from "../contexts/EntryContext"
-import Button from "react-bootstrap/Button"
+
+import { Button, Form, FloatingLabel, Image, Container, Col, Row } from 'react-bootstrap'
 const Home = () => {
 
     const monthsArray = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     //   const months = monthsArray.map(month => <Route key={uuidv4()} path={month} element={<MonthlyEntries month={month} />} />)
 
-    const { Logout, accountName } = useContext(AuthContext)
+    const { Logout, accountName,user } = useContext(AuthContext)
     const { setEntries, entries } = useContext(EntryContext)
+
+    console.log(user)
 
     function Reset() {
         Logout()
@@ -21,31 +24,33 @@ const Home = () => {
     }
     console.log(entries === null)
 
-    return (<>
-        {<div className="home">
-            < div className="content" >
-                <div className="title">
+    return (
+    <>
+        <Container fluid className="home">
+            <Row className="content">
+                <Col className="title">
                     <div className="header-left">My Journal</div>
                     <div className="header-right">
                         {/* <button onClick={Reset}>Logout</button> */}
-                        <div>
-                            {accountName}
-                        </div>
-                        <Button onClick={Reset} variant="light">Logout</Button>
+                        {/* <div className="username">
+                            {user.data.user.username}
+                        </div> */}
+                        <span className="me-4">{user.data.user.username}</span><Button onClick={Reset} variant="light">Logout</Button>
                     </div>
-                </div>
-                < FilterBar monthsArray={monthsArray} />
-                {/* <EntryList /> */}
-                {entries ? entries.length ?
-                    <EntryList />
-                    :
-                    <div className="empty-notice"> No journal notes for this month </div> :
-                    <div className="empty-notice"> No journal notes for this month </div>
-                }
-                <EntryForm />
-            </div >
-        </div >}
-    </>)
+                </Col>
+            </Row >
+            < FilterBar monthsArray={monthsArray} />
+            {entries ? entries.length ?
+                <EntryList />
+                :
+                <div className="empty-notice"> No journal notes for this month </div> :
+                <div className="empty-notice"> No journal notes for this month </div>
+            }
+            <EntryForm />
+
+        </Container >
+    </>
+    )
 }
 
 

@@ -4,15 +4,16 @@ import { AuthContext } from "../contexts/AuthContext"
 import EntryDetails from "../components/EntryDetails"
 import EditForm from "../components/EditForm"
 import FilterBar from "../components/FilterBar"
-import Button from "react-bootstrap/Button"
 import EntryForm from "../components/EntryForm"
-
-
+import EntryList from "../components/EntryList"
+import { Button, Form, FloatingLabel, Image, Container, Col, Row } from 'react-bootstrap'
 const MonthlyEntries = (props) => {
     const { changeId, toggleEdit, entries, setEntries } = useContext(EntryContext)
-    const { Logout, accountName } = useContext(AuthContext)
+    const { Logout, accountName,user } = useContext(AuthContext)
 
     const monthlyEntries = entries ? entries.filter(entry => entry.date.split(" ")[0] === `${props.month}`) : null
+
+
 
     const monthsArray = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
@@ -23,31 +24,37 @@ const MonthlyEntries = (props) => {
     }
 
     return (
-        <div className="content">
-            <div className="title">
-                <div className="header-left">My Journal</div>
-                <div className="header-right">
-                    <div>
-                        {accountName}
+        <>
+
+                <Container fluid className="monthly-container">
+            <Row className="content">
+                <Col className="title">
+                    <div className="header-left">My Journal</div>
+                    <div className="header-right">
+                        {/* <button onClick={Reset}>Logout</button> */}
+                        {/* <div className="username">
+                            {user.data.user.username}
+                        </div> */}
+                        <span className="me-4">{user.data.user.username}</span><Button onClick={Reset} variant="light">Logout</Button>
                     </div>
-                    <Button onClick={Reset} variant="light">Logout</Button>
-                </div>
-            </div>
+                </Col>
+            </Row >
             < FilterBar monthsArray={monthsArray} />
-            {/* <div className="entry-list"> */}
-            {monthlyEntries > 0?
-                <div className="entry-list"> 
+            {monthlyEntries.length > 0?
+
+                
+                <Row className="entry-list entry-list mt-4"> 
                 {monthlyEntries.map(entry => {
                     return entry.id === changeId ? <EditForm entry={entry} /> :
                         <EntryDetails key={entry.id} entry={entry} toggleEdit={toggleEdit} />
                 })}
-                </div>
+                </Row>
                 :
                 <div className="empty-notice"> No journal notes for this month </div>}
-            {/* {entries.map(entry => <EntryDetails key={entry.id} entry={entry} />)} */}
-            {/* </div> */}
             <EntryForm />
-        </div>
+
+        </Container >
+        </>
     )
 }
 

@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { EntryContext } from "../contexts/EntryContext";
-
+import { Col } from "react-bootstrap"
 const EntryDetails = (props) => {
     const {deleteEntry, addFavorite, delFavorite } = useContext(EntryContext)
     // console.log(props)
 
     return (
-        <div className="entry">
+        <Col className="entry" xs={11} sm={8} md={5} lg={4} xl ={3} xxl={3}>
             <div className="entry-header">
                 <h2>{props.entry.date}</h2>
                 <div className="form-buttons">
@@ -27,7 +27,7 @@ const EntryDetails = (props) => {
                 <h3>Title: {props.entry.topic}</h3>
                 <p>Details: {props.entry.details}</p>
             </div>
-        </div>
+        </Col>
     );
 }
 

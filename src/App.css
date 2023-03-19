@@ -3,7 +3,7 @@
 
 #root {
   /* border: 1px solid black; */
-  height: 100vh;
+  min-height: 100vh;
   background-color: rgb(206, 190, 190);
 }
 
@@ -21,23 +21,25 @@
 
 .content {
   /* border: 1px solid red; */
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
 }
 
 
 .title {
   font-size: 4rem;
-  color: #3C79F5;
+  color: #3C79F5;;
+
   text-align: center;
   padding: 3rem 1rem 0rem 1rem;
   font-family: 'Fredoka One', cursive;
   /* background-color: #066163 */
-  display: flex;
+  /* display: flex; */
   /* justify-content: center; */
-  justify-content: space-around;
+  /* justify-content: space-around; */
   /* align-items: flex-end; */
   /* border: 1px solid red; */
+  letter-spacing: 2px;
 }
 
 
@@ -55,20 +57,25 @@
   border: 2px solid antiquewhite; */
   /* border: 1px solid red; */
   /* margin-left: auto; */
-  margin-left: auto !important;
+  /* margin-left: auto !important; */
 }
 
 .content {
-  display: flex;
-  padding: 0rem 4rem;
+  /* display: flex;
+  padding: 0rem 4rem; */
 }
 
 .header-right {
-  display: flex;
-  /* border: 1px solid red; */
+  /* display: flex;
   font-size: 1rem;
   align-items: center;
-  gap: 1rem;
+  gap: 1rem; */
+}
+
+.header-right span {
+  font-size: 1.5rem;
+  color:black;
+  /* letter-spacing: 2px; */
 }
 
 
