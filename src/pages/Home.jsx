@@ -19,7 +19,7 @@ const Home = () => {
         setEntries(null)
         console.log(entries)
     }
-    console.log(entries)
+    console.log(entries === null)
 
     return (<>
         {<div className="home">
@@ -29,17 +29,19 @@ const Home = () => {
                     <div className="header-right">
                         {/* <button onClick={Reset}>Logout</button> */}
                         <div>
-                           {accountName}
+                            {accountName}
                         </div>
                         <Button onClick={Reset} variant="light">Logout</Button>
                     </div>
                 </div>
                 < FilterBar monthsArray={monthsArray} />
                 {/* <EntryList /> */}
-                {entries.length > 0 ?
-                <EntryList />
-                :
-                <div className="empty-notice"> No journal notes for this month </div>}
+                {entries ? entries.length ?
+                    <EntryList />
+                    :
+                    <div className="empty-notice"> No journal notes for this month </div> :
+                    <div className="empty-notice"> No journal notes for this month </div>
+                }
                 <EntryForm />
             </div >
         </div >}

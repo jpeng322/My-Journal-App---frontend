@@ -1,19 +1,9 @@
-/* #root {
-    border: 1px solid black;
-    display: flex;
-} */
+.design {}
 
-.img {
-    /* border: 1px solid red; */
-
-}
-
-.design {
-    
-}
 .signup-container {
     display: flex;
-    height: 100vh;
+    /* flex-grow: 1; */
+    /* height: 100%; */
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -22,42 +12,40 @@
 
 .access-form {
     display: flex;
+    height: 100%;
 }
 
-.access-form>* {
-    /* border: 1px solid red; */
-}
 
 .design {
-    flex-grow: 1;
+
     background-color: #3C79F5;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 45%
+
 }
 
 .signup-container {
-    flex-grow: 1;
-    width: 55%;
     background-color: rgb(236, 232, 232);
 }
 
+.row {
+    flex: 1
+}
+
 .signup-content {
-    /* background-color: rgb(205, 202, 202); */
-    /* border: 1px solid red; */
-    /* box-shadow: 5px 5px 10px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 200px;
+    width: 300px;
+    text-align: center;
 }
 
 
 
-.input{
+.input {
     width: 100%;
 }
 
@@ -79,5 +67,4 @@
 .access-message {
     display: flex;
     gap: .5rem;
-    /* flex-direction:  column; */
 }

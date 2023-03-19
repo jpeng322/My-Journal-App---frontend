@@ -2,10 +2,9 @@ import { useContext, useState } from "react";
 import "../cssPages/Signup.css"
 import { Link } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form'
-import FloatingLabel from "react-bootstrap/FloatingLabel";
-import Image from 'react-bootstrap/Image'
+
+import { Button, Form, FloatingLabel, Image, Container, Col, Row } from 'react-bootstrap'
+
 import Logo from "../../images/logo.png"
 
 const Signup = () => {
@@ -20,69 +19,55 @@ const Signup = () => {
     }
 
     return (
-        // <form action="" className="signup" onSubmit={handleSubmit}>
-        //     <div className="signup-content">
-        //         <h3>Sign Up</h3>
-        //         <div className="input">
-        //             <label htmlFor="email">Email:</label>
-        //             <input type="text" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        //         </div>
-        //         <div className="input">
-        //             <label htmlFor="password">Password:</label>
-        //             <input type="text" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        //         </div>
-        //         <div className="input">
-        //             <button type="submit">Sign Up</button>
-        //             <Link to="/login">Already signed up?</Link>
-        //         </div>
-        //         <div>
-        //             {signupMessage}
-        //         </div>
-        //     </div>
-        // </form>
-        <div className="access-form">
-            <div className="design">
-                <div>
-                    <Image className="img" src={Logo} fluid>
-                    </Image>
-                </div>
-            </div>
+        <Container fluid className="d-flex flex-column flex-lg-row">
 
-            <div className="signup-container">
-                <Form action="" onSubmit={handleSubmit}>
-                    <div className="signup-content">
-                        <h3>Welcome to MJN!</h3>
-                        <div className="input">
-                            <FloatingLabel
-                                controlId="floatingInput"
-                                label="Email"
-                                className="float-label"
-                            >
-                                <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} />
-                            </FloatingLabel>
-                        </div>
-                        <div className="input">
-                            <FloatingLabel
-                                controlId="floatingInput"
-                                label="Password "
-                                className="float-label"
-                            >
-                                <Form.Control type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
-                            </FloatingLabel>
-                        </div>
-                        <div className="btn-div">
-                            <Button className="sub-btn" type="submit">Sign Up</Button>
-                            {/* <Link to="/signup">Sign up</Link> */}
-                        </div>
-                        <div>{signupMessage}</div>
+            <Row className="access-form d-flex flex-column flex-lg-row">
+                <Col className="design d-flex">
+                    <div>
+                        <Image className="img" src={Logo} fluid>
+                        </Image>
                     </div>
-                </Form>
-                <div className="access-message" >
-                    <p>Already have an account? </p>
-                    <Link to="/login">Log In</Link></div>
-            </div>
+                </Col>
 
-        </div>
+
+            </Row>
+            <Row className="">
+
+                <Col className="signup-container d-flex">
+                    <Form action="" onSubmit={handleSubmit}>
+                        <Col className="signup-content mb-lg-5">
+                            <h3>Welcome to MJN!</h3>
+                            <div className="input">
+                                <FloatingLabel
+                                    controlId="floatingInput"
+                                    label="Email"
+                                    className="float-label"
+                                >
+                                    <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} />
+                                </FloatingLabel>
+                            </div>
+                            <div className="input">
+                                <FloatingLabel
+                                    controlId="floatingInput"
+                                    label="Password "
+                                    className="float-label"
+                                >
+                                    <Form.Control type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+                                </FloatingLabel>
+                            </div>
+                            <div className="btn-div">
+                                <Button className="sub-btn" type="submit">Sign Up</Button>
+                                {/* <Link to="/signup">Sign up</Link> */}
+                            </div>
+                            <div>{signupMessage}</div>
+                        </Col>
+                    </Form>
+                    <div className="access-message" >
+                        <p>Already have an account? </p>
+                        <Link to="/login">Log In</Link></div>
+                </Col>
+            </Row>
+        </Container>
     );
 }
 
