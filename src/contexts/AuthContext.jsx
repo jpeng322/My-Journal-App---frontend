@@ -18,8 +18,10 @@ const AuthContextProvider = (props) => {
         setSignupMessage("")
 
         axios.post("http://localhost:3001/signup", { username, password }).then(response => {
-            console.log(response)
-            // setSignupMessage("Successfully signed up!")
+            setSignupMessage("Successfully signed up!")
+            setTimeout(() => {
+                setSignupMessage("")
+            }, 6000)
             localStorage.setItem("user", JSON.stringify(response))
         })
             .catch(
@@ -29,7 +31,7 @@ const AuthContextProvider = (props) => {
                     setTimeout(() => {
                         setSignupMessage("")
                     }, 6000)
-                    console.log(JSON.parse(error.request.response).msg)
+
                 }
             )
     }
@@ -40,7 +42,7 @@ const AuthContextProvider = (props) => {
         setLoginMessage("")
 
         axios.post("http://localhost:3001/login", { username, password }).then(response => {
-            // console.log(response)
+
             setHasUser(true)
             localStorage.setItem("user", JSON.stringify(response))
             const user = JSON.parse(localStorage.getItem("user"))
@@ -59,28 +61,24 @@ const AuthContextProvider = (props) => {
     }
 
     const Logout = () => {
-        console.log("item removed!")
+
         setHasUser(false)
         localStorage.removeItem("user")
         setUser("")
-        // setEntries(null)
+
     }
 
     console.log(user)
     useEffect(() => {
         const userLocal = JSON.parse(localStorage.getItem('user'))
-        console.log(userLocal)
-        // const user = JSON.parse(localStorage.getItem("user"))
+
         if (userLocal) {
             setUser(userLocal)
             setHasUser(true)
-            // setUser(user)
-            // Login
-            console.log(userLocal)
+
         }
     }, [])
 
-    console.log(user)
     return (
         <AuthContext.Provider value={{ Signup, signupMessage, Login, loginMessage, accountName, setAccountName, accountPw, setAccountPw, Logout, user, setUser, hasUser }} >
             {props.children}
