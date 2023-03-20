@@ -27,7 +27,7 @@ const Login = (props) => {
 
     return (
 
-        <Container fluid className="d-flex flex-column flex-lg-row">
+        <Container fluid className="login-container d-flex flex-column flex-lg-row">
             <Row className="access-form d-flex flex-column flex-lg-row">
                 <Col className="design d-flex">
                     <div>
@@ -37,7 +37,7 @@ const Login = (props) => {
                 </Col>
             </Row>
             <Row className="">
-                <Col className="signup-container d-flex">
+                <Col className="form-container d-flex">
                     <Form action="" onSubmit={handleSubmit}>
                         <div className="signup-content mb-lg-5">
                             <h3>Welcome Back!</h3>

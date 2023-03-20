@@ -1,6 +1,10 @@
+.signup-container, .login-container{
+    height: 100% 
+}
+
 .design {}
 
-.signup-container {
+.form-container {
     display: flex;
     /* flex-grow: 1; */
     /* height: 100%; */
@@ -25,12 +29,13 @@
 
 }
 
-.signup-container {
+.form-container {
     background-color: rgb(236, 232, 232);
 }
 
 .row {
-    flex: 1
+    flex: 1;
+
 }
 
 .signup-content {
@@ -41,6 +46,7 @@
     gap: 1rem;
     width: 300px;
     text-align: center;
+    padding: 2rem;
 }
 
 
