@@ -1,10 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins&display=swap");
 
 #root {
   /* border: 1px solid black; */
   height: 100vh;
-  background-color: rgb(206, 190, 190);
+  background-color: rgb(236, 232, 232);
 }
 
 * {
@@ -13,71 +12,24 @@
   box-sizing: border-box;
 }
 
-
 .app {
   height: 100%;
 }
 
-
-.content {
-  /* border: 1px solid red; */
-  /* display: flex;
-  flex-direction: column; */
-}
-
-
 .title {
   font-size: 4rem;
-  color: #3C79F5;;
+  color: #3c79f5;
 
   text-align: center;
   padding: 3rem 1rem 0rem 1rem;
-  font-family: 'Fredoka One', cursive;
-  /* background-color: #066163 */
-  /* display: flex; */
-  /* justify-content: center; */
-  /* justify-content: space-around; */
-  /* align-items: flex-end; */
-  /* border: 1px solid red; */
+  font-family: "Fredoka One", cursive;
   letter-spacing: 2px;
-}
-
-
-.title button {
-  /* border: 1px solid red; */
-  /* margin-left: auto; */
-  /* position: absolute; */
-  /* right: 0; */
-  /* margin-right: 4rem;
-  margin-top: 1rem;
-  padding: 1rem;
-  background-color: transparent;
-  color: antiquewhite;
-  font-family: 'Fredoka One', cursive;
-  border: 2px solid antiquewhite; */
-  /* border: 1px solid red; */
-  /* margin-left: auto; */
-  /* margin-left: auto !important; */
-}
-
-.content {
-  /* display: flex;
-  padding: 0rem 4rem; */
-}
-
-.header-right {
-  /* display: flex;
-  font-size: 1rem;
-  align-items: center;
-  gap: 1rem; */
 }
 
 .header-right span {
   font-size: 1.5rem;
-  color:black;
-  /* letter-spacing: 2px; */
+  color: black;
 }
-
 
 .del-btn svg:active {
   transform: scale(0.98);
@@ -89,9 +41,3 @@
   margin-top: 100px;
 }
 
-
-
-/* .entry {
-  width: 300px;
-  height: 300px;
-} */

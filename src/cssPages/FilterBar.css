@@ -1,52 +1,39 @@
 nav {
-  background-color: rgb(206, 190, 190);
-    display: flex;
-    /* justify-content: center; */
-    /* gap: 1.5rem; */
-    /* flex-direction: column; */
-    /* padding: 0rem 5rem !important; */
-  }
-  
- .filter-selection {
+  background-color: rgb(236, 232, 232);
+  display: flex;
+}
+
+.filter-selection {
   text-align: center;
- }
- nav col {
+}
+nav col {
   text-align: center;
- }
-  nav a {
+}
+nav a {
+  color: #3c79f5 !important;
+  text-decoration: none !important;
+  font-family: "Fredoka One", cursive;
+  letter-spacing: 1px;
+  font-size: 1.15rem;
+}
 
-    color: #3C79F5 !important;
-    text-decoration: none !important;
-    /* padding: 1rem 0rem; */
-    font-family: "Fredoka One", cursive;
-    letter-spacing: 1px;
-    font-size: 1.15rem;
-  }
-  
-  nav a:hover {
-    /* text-decoration: underline !important; */
-  }
-  
-  nav button {
-    background-color: transparent;
-    border: none;
-  }
-  
-  nav button svg {
-    width: 25px;
-    fill: #8a8888;
+nav button {
+  background-color: transparent;
+  border: none;
+}
 
-  }
-  
-  nav button svg:hover {
-    transition: .3s;
-    cursor: pointer;
-    transform: translateY(-1px);
-    /* box-shadow: 0 10px 30px -15px; */
-  }
-  
-  nav button svg:active {
-    transform: scale(0.98);
-    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
-  }
+nav button svg {
+  width: 25px;
+  fill: #8a8888;
+}
 
+nav button svg:hover {
+  transition: 0.3s;
+  cursor: pointer;
+  transform: translateY(-1px);
+}
+
+nav button svg:active {
+  transform: scale(0.98);
+  box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}

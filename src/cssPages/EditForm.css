@@ -1,15 +1,12 @@
 .edit-entry {
-   /* border: 2px solid black; */
    border-radius: .5rem;
    padding: 1rem;
    background-color:#e2e1de;
-   /* background-color: #AAA492; */
    font-family: 'Fredoka One', cursive;
    display: flex;
    flex-direction: column;
    gap: 1rem;
    box-shadow: 3px 3px 10px;
-   /* height: 300px */
   }
 
 
@@ -20,7 +17,6 @@ form {
 }
 
 .edit-content {
-    /* border: 1px solid black; */
 padding: 1rem 2rem;
 display: flex;
 flex-direction: column;
@@ -28,14 +24,12 @@ gap: .5rem;
 }
 
 .edit-content >*:nth-child(1) {
-    /* border: 1px solid black; */
     display: flex;
     justify-content: start;
     gap: .5rem;
 }
 
 .edit-content >*:nth-child(2) {
-    /* border: 1px solid black; */
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -43,7 +37,6 @@ gap: .5rem;
 }
 
 .edit-buttons {
-    /* border: 1px solid red; */
     display: flex;
     justify-content: end;
     gap: .5rem;
